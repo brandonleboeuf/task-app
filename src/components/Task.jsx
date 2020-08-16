@@ -7,9 +7,10 @@ const Container = styled.div`
   padding: 8px;
   margin-bottom: 8px;
 `;
+//note
 
 export default class Task extends React.Component {
   render() {
     return <Container>{this.props.task.content}</Container>;
   }
-}
+}q
