@@ -25,13 +25,23 @@ class App extends React.Component {
     const column = this.state.columns[source.droppableId];
     const newTaskIds = Array.from(column.taskIds);
     newTaskIds.splice(source.index, 1);
-    newTaskIds.splice(destination.index, 1, draggableId);
+    newTaskIds.splice(destination.index, 0, draggableId);
 
     const newColumn = {
       ...column,
-      taskIds: newTaskIds
-    }
-  }
+      taskIds: newTaskIds,
+    };
+
+    const newState = {
+      ...this.state,
+      columns: {
+        ...this.state.columns,
+        [newColumn.id]: newColumn,
+      },
+    };
+
+    this.setState(newState);
+  };
 
   render() {
     return (
